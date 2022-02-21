@@ -3,7 +3,7 @@ import Login from "../pages/login/Login"
 import styled from 'styled-components'
 import { Search,Person} from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import LoginContext from '../context/ContextProvider';
+//import LoginContext from '../context/ContextProvider';
 import { Typography } from '@material-ui/core';
 
 const Container = styled.div`
