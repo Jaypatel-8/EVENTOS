@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
-import LoginDialog from './login/Login';
+import React, { useContext, useState } from 'react'
+import Login from "../pages/login/Login"
 import styled from 'styled-components'
 import { Search,Person} from "@material-ui/icons";
+import { Link } from "react-router-dom";
+import LoginContext from '../context/ContextProvider';
+import { Typography } from '@material-ui/core';
 
 const Container = styled.div`
     height: 60px;
      background-color:white;
+    
 `;
 
 
@@ -66,7 +70,8 @@ const MenuItem = styled.div`
  `;
 const Navbar = () => {
 
-    const [open,setOpen]=useState(false)
+    const [open,setOpen]=useState(false);
+    
     const openLoginDialog=()=>{
       setOpen(true)
     }
@@ -81,17 +86,25 @@ const Navbar = () => {
                     </SearchContainer>
                 </Left>
                 <Center>
-                    <Logo>EVENTOS.</Logo>
+                    <Logo>EVENTOS</Logo>
                 </Center>
                 <Right>
+                  <Link to = {"./Services"} style={{textDecoration:'none',color:'black'}}>
                     <MenuItem>SERVICES</MenuItem>
-                    <MenuItem onClick={()=>openLoginDialog()}>LOGIN</MenuItem>
+                  </Link>
+                   {/* { account? */}
+                    {/* // { <Typography>{account}</Typography>: } */}
+                    <Link to = {"./Login"} style={{textDecoration:'none',color:'black'}}>
+
+                    <MenuItem >LOGIN</MenuItem>
+                    </Link>
+                  {/* {} */}
                    {/* <Person/> */}
                     
           </Right>
 
             </Wrapper>
-            <LoginDialog open={open} setOpen={setOpen}/>
+            {/* <LoginDialog open={open} setOpen={setOpen} /> */}
         </Container>
     )
 }
