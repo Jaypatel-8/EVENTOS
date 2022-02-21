@@ -127,7 +127,9 @@ const Login = () => {
                     marginLeft: "184px",
                   }}
                 >
+                  <Link style={{textDecoration:'none',color:'black'}}>
                   Forgot Password?
+                  </Link>
                 </Typography>
                 <Button
                   style={{
@@ -167,7 +169,7 @@ const Login = () => {
                       cursor: "pointer",
                     }}
                   >
-                    <Link to ="./Register">
+                    <Link to ="./Register" style={{textDecoration:'none',color:'black'}}>
 
                     Register Yourself
                     </Link>

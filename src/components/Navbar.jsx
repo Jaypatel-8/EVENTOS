@@ -92,19 +92,16 @@ const Navbar = () => {
                   <Link to = {"./Services"} style={{textDecoration:'none',color:'black'}}>
                     <MenuItem>SERVICES</MenuItem>
                   </Link>
-                   {/* { account? */}
-                    {/* // { <Typography>{account}</Typography>: } */}
+                 
                     <Link to = {"./Login"} style={{textDecoration:'none',color:'black'}}>
 
                     <MenuItem >LOGIN</MenuItem>
                     </Link>
-                  {/* {} */}
-                   {/* <Person/> */}
-                    
+                
           </Right>
 
             </Wrapper>
-            {/* <LoginDialog open={open} setOpen={setOpen} /> */}
+           
         </Container>
     )
 }
