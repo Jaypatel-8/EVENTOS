@@ -8,7 +8,7 @@ import {
   Button,
 } from "@material-ui/core";
 import by from "./by.png";
-import { Link } from "react-router-dom";
+import { Link , useHistory} from "react-router-dom";
 
 
 
@@ -19,12 +19,9 @@ const useStyle = makeStyles({
     width: "590px",
   },
   image: {
-    //backgroundImage:`url(${'https://pngtree.com/freepng/young-service-boy-vector-download-user-icon-vector-avatar_5257569.html'})`,
     background: "#625f5f",
-    //background:'black',
     height: "70vh",
     width: "41%",
-    //display:'flex'
   },
   txt: {
     color: "white",
@@ -34,6 +31,38 @@ const useStyle = makeStyles({
 });
 
 const Login = () => {
+
+    const history =useHistory();
+
+    const[email,setEmail] = useState('');
+    const[password,setPassword] = useState('');
+
+    const loginUser = async (e) => {
+      e.preventDefault();
+
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+  
+        body: JSON.stringify({
+           email, password
+  
+        })
+      });
+
+      const data = res.json();
+
+      if (res.status === 400 || !data){
+        window.alert("Invalid credintial")
+      }else{
+        window.alert("Log In successfully!")
+        history.push("/");
+      }
+    };
+
+
   const classes = useStyle();
    return (
 
@@ -108,13 +137,19 @@ const Login = () => {
                   },
                 }}
               >
-                <TextField
+                <TextField 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)} 
+
                   name="Username"
                   type="email"
                   label="Enter Your Email"
                 ></TextField>
 
-                <TextField
+                <TextField 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} 
+
                   name="password"
                   type="password"
                   label="Enter Your Password"
@@ -131,7 +166,7 @@ const Login = () => {
                   Forgot Password?
                   </Link>
                 </Typography>
-                <Button
+                <Button   onClick={loginUser}
                   style={{
                     marginTop: "20px",
                     padding: "13px",
@@ -169,7 +204,7 @@ const Login = () => {
                       cursor: "pointer",
                     }}
                   >
-                    <Link to ="./Register" style={{textDecoration:'none',color:'black'}}>
+                    <Link to ="./SignUp" style={{textDecoration:'none',color:'black'}}>
 
                     Register Yourself
                     </Link>

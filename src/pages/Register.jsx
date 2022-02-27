@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   makeStyles,
   Box,
@@ -7,7 +7,7 @@ import {
   Button,
 } from "@material-ui/core";
 import by from "./login/by.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 //css
 const useStyle = makeStyles({
@@ -15,13 +15,10 @@ const useStyle = makeStyles({
     height: "70vh",
     width: "590px",
   },
-  image: {
-    //backgroundImage:`url(${'https://pngtree.com/freepng/young-service-boy-vector-download-user-icon-vector-avatar_5257569.html'})`,
-    background: "#da9595",
-    //background:'black',
-    height: "70vh",
+  image: {   
+    background: "#90abcc",
+    height: "74vh",
     width: "31%",
-    //display:'flex'
   },
   txt: {
     color: "white",
@@ -31,8 +28,60 @@ const useStyle = makeStyles({
   },
 });
 
+
 const Register = () => {
+  const history = useHistory();
+
+  //react usestate hooks store data in database
+
+  const [user, setUser] = useState({
+    username: "", email: "", password: "", cpassword: ""
+  });
+
+  let name, value;
+
+  const handleInputs = (e) => {
+    console.log(e);
+    name = e.target.name;
+    value = e.target.value;
+
+    setUser({ ...user, [name]: value })
+  }
+
+
+  const PostData = async (e) => {
+    e.preventDefault();
+
+    const { username, email, password, cpassword } = user;
+
+    const res = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+
+      body: JSON.stringify({
+        username, email, password, cpassword
+
+      })
+    });
+
+    const data = await res.json();
+
+    if (res.status === 422 || !data) {
+      window.alert("Invalid registration");
+      console.log("Invalid registration");
+    } else {
+      window.alert("successfull Registration");
+      console.log("successfull registration");
+
+      history.push("/login");
+    }
+  }
+
+
   const classes = useStyle();
+
   return (
     <Box
       style={{
@@ -71,16 +120,16 @@ const Register = () => {
         </div>
       </Box>
 
-      <Box style={{ border: "8px solid #da9595" }}>
+      <Box style={{ border: "8px solid #90abcc" }}>
         <Typography
           style={{
             fontSize: "30px",
-            color: "rgb(226 112 112)",
+            color: "#90abcc",
             fontWeight: 550,
             fontFamily: "cursive",
             marginTop: "27px",
             marginLeft: "22px",
-            marginRight:"10px"
+            marginRight: "10px"
           }}
         >
           New At EVENTOS?
@@ -88,7 +137,7 @@ const Register = () => {
         <Typography
           style={{
             fontSize: "18px",
-            color: "rgb(226 112 112)",
+            color: "#90abcc",
             fontWeight: 561,
             fontFamily: "cursive",
             marginTop: "30px",
@@ -108,29 +157,36 @@ const Register = () => {
             },
           }}
         >
-          <TextField
-            name="Username"
+          <TextField value={user.username} onChange={handleInputs}
+            name="username"
             type="text"
             label="Enter Your User Name"
           ></TextField>
-          <TextField
+
+          <TextField value={user.email} onChange={handleInputs}
             name="email"
             type="email"
             label="Enter Your Email"
           ></TextField>
 
-          <TextField
+          <TextField value={user.password} onChange={handleInputs}
             name="password"
             type="password"
             label="Enter Your Password"
           ></TextField>
-         
-         
-          <Button
+
+          <TextField value={user.cpassword} onChange={handleInputs}
+            name="cpassword"
+            type="password"
+            label="Confirm Your Password"
+          ></TextField>
+
+
+          <Button onClick={PostData}
             style={{
               marginTop: "20px",
               padding: "13px",
-              backgroundColor: "#da9595",
+              backgroundColor: "#90abcc",
               color: "white",
             }}
           >
@@ -163,7 +219,7 @@ const Register = () => {
                 cursor: "pointer",
               }}
             >
-              <Link to="./Login" style={{textDecoration:"none"}}>Login Now</Link>
+              <Link to="./Login" style={{ textDecoration: "none" }}>Login Now</Link>
             </a>
           </Box>
         </Box>
