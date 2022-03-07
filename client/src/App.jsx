@@ -8,6 +8,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Redirect,
     
   } from "react-router-dom";
 import Login from "./pages/login/Login"
@@ -15,8 +16,10 @@ import Register from "./pages/Register";
 import { loadUser } from "./actions/userActions";  
 import store from "./store";
 import UserProfile from "./components/UserProfile";
-import BookingReq from "./pages/BookingReq";
+
+import ProfileDetails from "./pages/ProfileDetails"
 import NewPassword from "./pages/NewPassword";
+// import User from "../../server/models/User";
 //import ProtectedRoute from "./routes/ProtectedRoute";
 
 const App = () => {
@@ -37,8 +40,8 @@ const App = () => {
           <Route path="/Services">
             <Services/>
           </Route>
-          <Route path="/Vendors/all/BookingReq">
-            <BookingReq/>
+          <Route path="/VendorDetails/:id">
+            <ProfileDetails/>
           </Route>
           <Route path="/Vendors/all/:category">
             <Vendors/>
@@ -58,6 +61,8 @@ const App = () => {
           <Route path="/me">
             <UserProfile/>
           </Route>
+          {/* <ProtectedRoute> */}
+          {/* </ProtectedRoute> */}
         </Switch>
       </Router>
      

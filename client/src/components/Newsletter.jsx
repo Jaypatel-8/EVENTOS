@@ -1,6 +1,7 @@
 import { Send } from "@material-ui/icons";
 import styled from "styled-components";
 //import { mobile } from "../responsive";
+import { useDispatch, useSelector} from 'react-redux'
 
 const Container = styled.div`
   height: 60vh;
@@ -45,16 +46,34 @@ const Button = styled.button`
 `;
 
 const Newsletter = () => {
+  const {user,loading} = useSelector(state => state.auth)
   return (
     <Container>
-      <Title>Connect with Us</Title>
+      {user ?(
+
+        <>
+      <Title>Send a Precious Expirence to us </Title>
       <Desc>Get timely updates from your favorite vendors.</Desc>
       <InputContainer>
-        <Input placeholder="Your email" />
+        <Input placeholder="Your valuable Message" />
         <Button>
           <Send />
         </Button>
       </InputContainer>
+      </> 
+      ) : !user &&
+        <>
+        <Title>Connect with Us</Title>
+        <Desc>Get timely updates from your favorite vendors.</Desc>
+       <InputContainer>
+         <Input placeholder="Your email" />
+         <Button>
+           <Send />
+         </Button>
+       </InputContainer>
+        </>
+    
+      }
     </Container>
   );
 };

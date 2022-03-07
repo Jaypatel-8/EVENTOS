@@ -7,7 +7,7 @@ const dotenv = require("dotenv")
 const userRoute = require("./routes/user")
 const authRoute = require("./routes/auth")
 const profileRoute = require ("./routes/profile")
-
+const cors = require('cors');
 dotenv.config();
 
 
@@ -15,7 +15,11 @@ const PORT = process.env.PORT;
 
 require('./db/conn');
 
-
+const corsOption = {
+    credentials: true,
+    origin: ['http://localhost:3000'],
+};
+app.use(cors(corsOption));
 app.use(express.json());
 app.use(cookieParser());
 

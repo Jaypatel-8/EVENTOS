@@ -78,7 +78,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
-  const {user} = useSelector(state => state.auth)
+  const {user,loading} = useSelector(state => state.auth)
   
   const [anchorEl,setAnchorEl]=useState(null);
   

@@ -91,7 +91,8 @@ const Vendors = () => {
 
           {profiles && profiles.filter((profile) => profile.category === category).map(profile => (
             //<profile key={profile.category} profile={profile}/>
-            <Link to = '/Vendors/all/BookingReq'>
+           
+            <Link to = {`/VendorDetails/${profile._id}`} key={profile._id} style={{textDecoration:'none',color:'black'}}>
 
             <Box className={classes.b}>
 

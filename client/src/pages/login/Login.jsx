@@ -61,6 +61,7 @@ const Login = () => {
       }else{
         //window.alert("Log In successfully!")
         alert.success('logged In successfully.')
+     
         history.push("/");
       }
     };
