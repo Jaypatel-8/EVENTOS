@@ -73,7 +73,7 @@ const useStyle = makeStyles({
 
 const Vendors = () => {
   const classes = useStyle();
-  const { category } = useParams();
+  const { vendortype } = useParams();
   const disptach = useDispatch();
 
   const { loading, profiles, error } = useSelector(state => state.profiles)
@@ -85,11 +85,11 @@ const Vendors = () => {
   return (
     <>
       <Navbar />
-      <Box className={classes.Title}>{category}</Box>
+      <Box className={classes.Title}>{vendortype}</Box>
       <Box className={classes.mainbox}>
         <Box className={classes.linearbox}>
 
-          {profiles && profiles.filter((profile) => profile.category === category).map(profile => (
+          {profiles && profiles.filter((profile) => profile.vendortype === vendortype).map(profile => (
             //<profile key={profile.category} profile={profile}/>
            
             <Link to = {`/VendorDetails/${profile._id}`} key={profile._id} style={{textDecoration:'none',color:'black'}}>

@@ -1,4 +1,4 @@
-const Profile = require ('../models/Profile')
+const Profile = require ('../models/businessSchema')
 const APIfeartures =  require("../utils/apiFeatures")
 const ErrorHandlers = require('../utils/errorHandlers')
 const catchAsyncErrors = require ('../middlewares/catchAsyncErrors')

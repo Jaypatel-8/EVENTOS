@@ -19,6 +19,12 @@ import UserProfile from "./components/UserProfile";
 
 import ProfileDetails from "./pages/ProfileDetails"
 import NewPassword from "./pages/NewPassword";
+import BusinessRegister from "./pages/BusinessRegister";
+import BusinessLogin from "./pages/BusinessLogin";
+import BusinessDash from "./pages/BusinessDash";
+import BusinessNav from "./pages/BusinessNav";
+import BusinessProfile from "./pages/BusinessProfile";
+import Notification from "./pages/Notification";
 // import User from "../../server/models/User";
 //import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -43,7 +49,7 @@ const App = () => {
           <Route path="/VendorDetails/:id">
             <ProfileDetails/>
           </Route>
-          <Route path="/Vendors/all/:category">
+          <Route path="/Vendors/all/:vendortype">
             <Vendors/>
           </Route>
           <Route path="/Login">
@@ -61,6 +67,23 @@ const App = () => {
           <Route path="/me">
             <UserProfile/>
           </Route>
+          <Route path="/BusinessRegister">
+            <BusinessRegister/>
+          </Route>
+          <Route path="/BusinessLogin">
+            <BusinessLogin/>
+          </Route>
+          <Route path="/BusinessDash">
+            <BusinessDash/>
+          </Route>
+          <Route path="/BusinessProfile">
+            <BusinessProfile/>
+          </Route>
+          <Route path="/Notification">
+            <Notification/>
+          </Route>
+
+
           {/* <ProtectedRoute> */}
           {/* </ProtectedRoute> */}
         </Switch>

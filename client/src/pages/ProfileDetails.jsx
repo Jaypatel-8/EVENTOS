@@ -117,10 +117,10 @@ const ProfileDetails = () => {
 
                     <Box className={classes.right}>
                         <Box className={classes.name}>{profileDetails.name}</Box>
-                        <Box className={classes.des}>{profileDetails.description}
+                        <Box className={classes.des}>{profileDetails.desc}
                         </Box>
                         <Box className={classes.city}>
-                            <LocationOnIcon /><Typography>{profileDetails.location}</Typography>
+                            <LocationOnIcon /><Typography>{profileDetails.city}</Typography>
                         </Box>
                         <Box className={classes.priceBox}>
                             PRICE : {profileDetails.price} rs/day

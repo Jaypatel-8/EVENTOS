@@ -25,12 +25,13 @@ const useStyle = makeStyles({
   image: {
     background: "#625f5f",
     height: "70vh",
-    width: "41%",
+    width: "25%",
   },
   txt: {
     color: "white",
     fontWeight: 500,
     fontFamily: "cursive",
+    marginLeft:"100px"
   },
 });
 
@@ -110,6 +111,7 @@ const Login = () => {
                 width: "200px",
                 padding: "20px",
                 marginTop: "100px",
+                marginLeft:"115px"
               }}
             ></img>
             <div
@@ -117,7 +119,7 @@ const Login = () => {
                 fontSize: "30px",
                 color: "white",
                 fontWeight: 610,
-                marginLeft: "45px",
+                marginLeft: "145px",
                 marginTop: "-5px",
                 fontFamily: "cursive",
               }}
@@ -131,7 +133,7 @@ const Login = () => {
           </Box>
 
         
-            <Box>
+            <Box style={{border:"12px solid #625f5f"}}>
               <Typography
                 style={{
                   fontSize: "30px",
@@ -164,6 +166,7 @@ const Login = () => {
                   flexDirection: "column",
                   "& > *": {
                     marginTop: 20,
+                    
                   },
                 }}
               >
@@ -240,6 +243,11 @@ const Login = () => {
                     </Link>
                   </a>
                 </Box>
+                <Typography style={{color: "rgb(143 138 138)",fontSize:'12px',marginTop:"13px",marginLeft:"13px"}}>Looking For An Business Account?
+                
+                <Link to={"./BusinessLogin"}>
+                <a style={{color:"blue",cursor:"pointer"}}>Click Here!</a></Link>
+                </Typography>
               </Box>
             </Box>
         </Box>
