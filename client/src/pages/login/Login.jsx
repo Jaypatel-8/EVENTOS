@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
  
   makeStyles,
@@ -11,6 +11,8 @@ import by from "./by.png";
 import { Link , useHistory} from "react-router-dom";
 import { Message } from "@material-ui/icons";
 import {useAlert} from 'react-alert'
+import { useDispatch, useSelector } from "react-redux";
+import { login,clearErrors } from "../../actions/userActions";
 
 
 
@@ -36,8 +38,31 @@ const Login = () => {
 
     const history =useHistory();
     const alert = useAlert();
+    const dispatch  = useDispatch();
+
     const[email,setEmail] = useState('');
     const[password,setPassword] = useState('');
+
+    // const {isAuthenticated,error,loading } = useSelector(state=>state.auth)
+
+    // useEffect(() => {
+
+    //   if(isAuthenticated){
+    //     alert.success('logged in successfully')
+    //     history.push('/')
+    //   }
+
+    //   if (error){
+    //     alert.error (error);
+    //     dispatch(clearErrors());
+    //   }
+
+    // },[dispatch, alert,isAuthenticated,error,history])
+
+    // const loginUser=(e) => {
+    //   e.preventDefault();
+    //   dispatch(login(email,password))
+    // }
 
     const loginUser = async (e) => {
       e.preventDefault();
@@ -49,7 +74,8 @@ const Login = () => {
         },
   
         body: JSON.stringify({
-           email, password
+           email,
+           password
   
         })
       });
@@ -57,7 +83,7 @@ const Login = () => {
       const data = res.json();
 
       if (res.status === 400 || !data){
-        window.alert("Invalid credintial")
+        alert.error("Invalid credintial")
       }else{
         //window.alert("Log In successfully!")
         alert.success('logged In successfully.')

@@ -33,11 +33,13 @@ export const login = (email,password) => async (dispatch) => {
               },
         }
 
-        const { data } = await axios.post('/api/auth/login', { email , password} , config)
+        const data  = await axios.post('/api/auth/login', { email , password} , config)
+        //console.log(data)
 
         dispatch({
             type:LOGIN_SUCCESS,
-            payload:data.user
+            payload:data.user,
+            
         })
 
 

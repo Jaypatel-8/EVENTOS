@@ -50,7 +50,7 @@ router.post("/register", async (req, res) => {
 
 //login 
 
-router.post ("/login", async (req,res) => {
+router.post ("/login", async (req,res,next) => {
     try{
         const {  email, password } = req.body;
         
@@ -58,32 +58,47 @@ router.post ("/login", async (req,res) => {
             return res.status(400).json({error:"pls fill required data"});
         }
 
+        //finding the user in database
         const userLogin = await User.findOne({email:email});
+         //console.log(userLogin);
 
-        // console.log(userLogin);
+         //check if password id correct or not
+        //  const isPasswordMatched  = await bcrypt.compare (password,userLogin.password)
+
+        //  if (!isPasswordMatched){
+        //      return  next (new ErrorHandler('invalid email or password',401))
+
+        //  }
+
+        //  const token = userLogin.getJwtToken();
+
+        //  res.status(200).json({
+        //      success:true,
+        //      token
+        //  })
+
         if(userLogin){
 
             const isMatch = await bcrypt.compare(password,userLogin.password);
 
-            sendToken(userLogin,200,res)
-            // const token = await userLogin.getJwtToken();
-            // res.cookie("token",token,{
-            //     expires:new Date(Date.now() + 25892000000),
-            //     httpOnly:true
-            // });
+            //sendToken(userLogin ,200 , res )
+         
+            const token = await userLogin.getJwtToken();
+            res.cookie("token",token,{
+                expires:new Date(Date.now() + 25892000000),
+                httpOnly:true
+            });
     
     
-            if (!isMatch){
-                res.status(400).json({error:"invalid credential"});
-            }
-           
-            // else{
-            //      res.status(201).json({
-            //       success:true,
-            //       message: "user registered successfully",
-            //       token
-            //   })
-            // }
+        if (!isMatch){
+            res.status(400).json({error:"invalid credential"});
+        }else{
+                 res.status(201).json({
+                  success:true,
+                  message: "user loggedin successfully",
+                  token
+              })
+        }
         }else{
             res.status(400).json({error:"invalid credential"});
         }
@@ -221,6 +236,7 @@ exports.resetPassword = catchAsyncError(async (req,res,next) => {
 
 
 //router 
+router.route('/login')
 router.route('/me').get(isAuthenticatedUser,this.getUserProfile)
 router.route('/me/update').put(isAuthenticatedUser,this.updateProfile)
 router.route('/password/forgot').post(this.forgotPassword)

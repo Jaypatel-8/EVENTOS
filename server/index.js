@@ -7,6 +7,7 @@ const dotenv = require("dotenv")
 const userRoute = require("./routes/user")
 const authRoute = require("./routes/auth")
 const profileRoute = require ("./routes/profile")
+const bookingRoute = require('./routes/booking')
 const cors = require('cors');
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use(cookieParser());
 app.use("/api/auth",authRoute);
 app.use("/api/users",userRoute);
 app.use("/api/p1",profileRoute);
+app.use("/api/b1",bookingRoute)
 
 //Middleware to handle errors
 app.use(errorMiddleware);

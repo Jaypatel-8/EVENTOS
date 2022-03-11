@@ -60,6 +60,7 @@ const UserSchema = new mongoose.Schema(
 );
 
 
+
 //hashing the password
 
 UserSchema.pre('save', async function (next) {
@@ -97,4 +98,5 @@ UserSchema.methods.getResetPasswordToken = function() {
 }
 
 
-module.exports = mongoose.model("user", UserSchema);
+const User = mongoose.model("user", UserSchema);
+module.exports = User

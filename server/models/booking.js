@@ -4,24 +4,35 @@ const bookingSchema = mongoose.Schema({
 
     name:{
         type:String,
-        require:[true,'Enter your Name ']
+        required:[true,'Enter your Name ']
     },
-    date:{
-        type:Date,
-        require:[true,"Enter Date on when is ur event is going to be happpen"]
-    },
-    place:{
+    contact:{
         type:String,
-        require:true
+        required:true,
+        minlength: [10,'your mobile number must have 10 digits'],
     },
-    event:{
+    address:{
         type:String,
-        require:true,
+        required:true
     },
-    phone:{
+    days:{
         type:Number,
-        require:true
-    }
+        required:true
+    },
+
+    sdate:{
+        type:String,
+        format:Date,
+        required:[true,"Enter Date on when is ur event is going to be happpen"]
+    },
+    edate:{
+        type:String,
+        format:Date,
+        required:[true,"Enter Date on when is ur event is going to be happpen"]
+    },
+   
+    
+   
 })
 
 module.exports = mongoose.model('booking',bookingSchema)
