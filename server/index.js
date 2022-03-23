@@ -10,6 +10,10 @@ const profileRoute = require ("./routes/profile")
 const bookingRoute = require('./routes/booking')
 const User=require("./models/businessSchema")
 const cors = require('cors');
+const bodyParser = require("body-parser");
+
+
+
 dotenv.config();
 
 
@@ -24,11 +28,11 @@ const corsOption = {
 app.use(cors(corsOption));
 app.use(express.json());
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended:true}));
 
-
+//business register login and logout
 app.post('/api/auth/businessRegister',async(req,res)=>{
 
-    
     console.log(req.body)
 
     try {
@@ -42,9 +46,8 @@ app.post('/api/auth/businessRegister',async(req,res)=>{
             price:req.body.price,
             city:req.body.city,
             number:req.body.number,
-            password:req.body.password,
-
-
+            password:req.body.passwor
+        
         })
         res.json({status:'ok'})
     } catch (error) {
@@ -76,6 +79,21 @@ app.post('/api/auth/signin',async(req,res)=>{
         }
         
 })
+
+//seller logout
+
+app.get("/logout", async (req,res) =>{
+    res.cookie('token',null,{
+        expires:new Date(Date.now()),
+        httpOnly:true
+    })
+
+    res.status(200).json({
+        success:true,
+        message:"user logged out"
+    })
+})
+
 
 //Import all the routes
 

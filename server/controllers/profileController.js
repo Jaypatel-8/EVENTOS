@@ -70,3 +70,9 @@ exports.updateProfile = catchAsyncErrors (async (req,res ,next) => {
         profile
     })
 })
+
+
+
+
+
+

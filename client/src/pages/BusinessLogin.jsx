@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import { Box, makeStyles, Typography ,TextField,Button} from "@material-ui/core";
 import lp from "./login/lp.png";
 import { Link,useHistory } from "react-router-dom";
+import { useAlert } from 'react-alert';
 //import { use } from "../../../server/routes/auth";
 
 const useStyle = makeStyles({
@@ -34,6 +35,7 @@ const useStyle = makeStyles({
 const BusinessLogin = () => {
 
     const history=useHistory();
+    const alert =  useAlert()
 
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
@@ -57,10 +59,10 @@ const BusinessLogin = () => {
 
       if (data.user) {
         //localStorage.setItem('token', data.user)
-        window.alert('Login successful')
-        history.push('./BusinessDash')
+        alert.success('Login successful')
+        history.push('/BusinessDash')
       } else {
-        window.alert('Please check your username and password')
+        alert.error('Invalid credintial')
       }
     } 
     

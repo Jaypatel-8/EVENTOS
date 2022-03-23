@@ -11,7 +11,7 @@ vendortype:{
             
             'Venues',
             'Photographers',
-            'Food',
+            'Food & Caterers',
             'Decorators',
             "DJ",
             'Clothing',
@@ -60,6 +60,16 @@ password:{
     type:String,
     required:true
 },
+// avatar:{
+//     public_id:{
+//         type:String,
+//         required:true
+//     },
+//     url:{
+//         type:String,
+//         required:true
+//     }
+// },
 
 
 
@@ -95,4 +105,4 @@ tokens:[{
 // }
 
 
-module.exports=mongoose.model('REGISTRATION',businessSchema);
+module.exports=mongoose.model('profile',businessSchema);

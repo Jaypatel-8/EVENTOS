@@ -6,7 +6,12 @@ class APIfeartures{
 
     search(){
         const keyword =this.queryStr.keyword ? {
-            category:{
+            vendortype:{
+                $regex: this.queryStr.keyword,
+                $options: 'i'
+            },
+
+            profilename:{
                 $regex: this.queryStr.keyword,
                 $options: 'i'
             }

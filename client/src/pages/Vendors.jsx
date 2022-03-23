@@ -5,6 +5,7 @@ import { Box, Typography, makeStyles } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfiles } from "../actions/profileActions";
 import { useParams,Link } from "react-router-dom";
+import Loader from "./Loader"
 
 
 const useStyle = makeStyles({
@@ -39,36 +40,7 @@ const useStyle = makeStyles({
     boxShadow: "2px 5px 2px #8887ab",
     border: "1px solid black"
   },
-  // b2: {
-  //   padding: "10px",
-  //   backgroundColor: "#ffffff",
-  //   height: "auto",
-  //   borderRadius: "8px",
-  //   width: "265px",
-  //   marginRight: "40px",
-  //   boxShadow: "2px 5px 2px #8887ab",
-  //   border: "1px solid black"
-  // },
-  // b3: {
-  //   padding: "10px",
-  //   backgroundColor: "#ffffff",
-  //   height: "auto",
-  //   borderRadius: "8px",
-  //   width: "265px",
-  //   marginRight: "40px",
-  //   boxShadow: "2px 5px 2px #8887ab",
-  //   border: "1px solid black"
-  // },
-  // b4: {
-  //   padding: "10px",
-  //   backgroundColor: "#ffffff",
-  //   height: "auto",
-  //   borderRadius: "8px",
-  //   width: "265px",
-  //   marginRight: "40px",
-  //   boxShadow: "2px 5px 2px #8887ab",
-  //   border: "1px solid black"
-  // },
+  
 });
 
 const Vendors = () => {
@@ -84,6 +56,9 @@ const Vendors = () => {
 
   return (
     <>
+    {loading ? (<Loader/>) : (
+      <>
+
       <Navbar />
       <Box className={classes.Title}>{vendortype}</Box>
       <Box className={classes.mainbox}>
@@ -137,6 +112,8 @@ const Vendors = () => {
 
         </Box>
       </Box>
+      </>
+    )}
     </>
     );
   };

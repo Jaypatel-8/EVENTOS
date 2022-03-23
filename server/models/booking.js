@@ -30,6 +30,10 @@ const bookingSchema = mongoose.Schema({
         format:Date,
         required:[true,"Enter Date on when is ur event is going to be happpen"]
     },
+    profilename:{
+        type:String,
+        required:true
+    }
    
     
    

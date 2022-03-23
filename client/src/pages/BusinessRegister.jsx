@@ -2,7 +2,8 @@ import React from "react";
 import {Box,makeStyles,Typography,TextField,Button,Select,MenuItem, InputLabel} from "@material-ui/core";
 import lp from "./login/lp.png";
 import { useState } from "react";
-import { Link,useHistory } from "react-router-dom";
+import { Link,useHistory, } from "react-router-dom";
+import { useAlert } from 'react-alert';
 
 
 
@@ -43,6 +44,7 @@ tf:{
 })
 const BusinessRegister=()=>{
   const history=useHistory()
+  const alert = useAlert()
 
   const [user,setUser]=useState({
     vendortype:"",name:"",email:"",brandname:"",des:"",price:"",address:"",city:"",number:"",password:""
@@ -61,7 +63,7 @@ const BusinessRegister=()=>{
     const resp=await fetch('http://localhost:5000/api/auth/businessRegister',{
       method:'POST',
           headers:{
-            'Content-Type':'application/json'
+            'Content-Type':'multitype/formdata'
           },
           body:JSON.stringify({
             vendortype,name,email,brandname,des,price,address,city,number,password
@@ -72,10 +74,13 @@ const BusinessRegister=()=>{
     const data=await resp.json();
 
     if (data.status === 'ok') {
-      window.alert("successfully Registered.")
+      alert.success("successfully Registered.")
 			history.push('/BusinessLogin');
 		}
-    console.log(data);
+    else{
+      alert.error("you've already a Registered.")
+    }
+    // console.log(data);
   } 
   
 
@@ -234,7 +239,7 @@ const BusinessRegister=()=>{
                         </TextField>
 
                         <TextField  name="password"
-                                    type="text"
+                                    type="password"
                                     value={user.password}
                                     onChange={handleInputs}
 

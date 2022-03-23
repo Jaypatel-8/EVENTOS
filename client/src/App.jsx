@@ -61,9 +61,9 @@ const App = () => {
           <Route path="/password/forgot" exact>
            <ForgotPass/>
           </Route>
-          <Route path='/password/reset/:token'>
+          {/* <Route path='/password/reset/:token'>
             <NewPassword/>
-          </Route>
+          </Route> */}
           <Route path="/me">
             <UserProfile/>
           </Route>

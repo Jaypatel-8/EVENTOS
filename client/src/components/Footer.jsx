@@ -8,6 +8,7 @@ import {
     Twitter,
   } from "@material-ui/icons";
   import styled from "styled-components";
+  import { Link } from "react-router-dom";
   //import { mobile } from "../responsive";
   
   const Container = styled.div`
@@ -109,17 +110,17 @@ import {
         <Center>
           <Title>Useful Links</Title>
           <List>
-            <ListItem>Home</ListItem>
+            <ListItem> Home</ListItem>
             <ListItem></ListItem>
-            <ListItem>Photographers</ListItem>
-            <ListItem>Venues</ListItem>
-            <ListItem>Food & Caterers</ListItem>
-            <ListItem>Decorators</ListItem>
-           
+            <ListItem> <Link to = '/vendors/all/Photographers'  style={{textDecoration:'none',color:'black'}}> Photographers </Link> </ListItem>
+            <ListItem> <Link to = '/vendors/all/Venues'         style={{textDecoration:'none',color:'black'}}> Venues </Link> </ListItem>
+            <ListItem> <Link to = '/vendors/all/Food & caterers'  style={{textDecoration:'none',color:'black'}}> Food & Caterers </Link> </ListItem>
+            <ListItem> <Link to = '/vendors/all/Decorators'  style={{textDecoration:'none',color:'black'}}> Decorators </Link> </ListItem>
+            
             <ListItem>Terms</ListItem>
           </List>
-        </Center>
-        <Right>
+        </Center>  
+         <Right>
           <Title>Contact</Title>
           <ContactItem>
             <Room style={{marginRight:"10px"}}/> dummy

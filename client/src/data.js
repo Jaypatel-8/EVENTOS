@@ -48,7 +48,7 @@ export const sliderItems = [
       id: 3,
       img: "https://images.pexels.com/photos/2814828/pexels-photo-2814828.jpeg?cs=srgb&dl=pexels-fidel-hajj-2814828.jpg&fm=jpg",
       title: "FOOD & CATERERS",
-      cat:"Food & Catrers"
+      cat:"Food"
     },
     {
       id: 4,

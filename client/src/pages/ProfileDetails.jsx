@@ -126,7 +126,7 @@ const ProfileDetails = () => {
                             PRICE : {profileDetails.price} rs/day
                         </Box>
                         <Button onClick={() => openDialog()} style={{ backgroundColor: "white", width: "400px", marginTop: "60px" }}>Request A Booking </Button>
-                        <InfoDialog open={open} setOpen={setOpen} />
+                        <InfoDialog open={open} setOpen={setOpen} profilename = {profileDetails.name} />
 
                     </Box>
 

@@ -16,10 +16,11 @@ comp:{
 
 });
 
-const InfoDialog=({open,setOpen})=>{
+const InfoDialog=({open,setOpen,profilename})=>{
     const classes=useStyle();
     const history =useHistory();
 
+    console.log(profilename)
     const [name,setName] = useState('')
     const [contact,setContact] = useState('')
     const [address,setAddress] = useState('')
@@ -44,7 +45,8 @@ const InfoDialog=({open,setOpen})=>{
                 address,
                 days,
                 sdate,
-                edate
+                edate,
+                profilename
                })
         });
 
